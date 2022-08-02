@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Game from "@components/WordateGame";
+import Game from "@components/Game";
 
 const Home: NextPage = () => {
   return (
@@ -11,8 +11,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Game firstWord={"WORD"} secondWord={"Ward"} /> */}
-      <main>welcome to fourword.app</main>
+      <Game />
+      {/* <main>welcome to fourword.app</main> */}
     </div>
   );
 };
