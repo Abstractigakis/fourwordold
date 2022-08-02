@@ -16,10 +16,8 @@ const PageLoading: FC = () => {
   });
 
   Router.events.on("routeChangeComplete", (url: any) => {
-    setTimeout(() => {
-      NProgress.done();
-      setLoading(false);
-    }, 3000);
+    NProgress.done();
+    setLoading(false);
   });
 
   return (
