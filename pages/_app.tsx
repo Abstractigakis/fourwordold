@@ -22,22 +22,21 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const [loading, setLoading] = useState(false);
 
   Router.events.on("routeChangeStart", (url: any) => {
-    console.log("routeChangeStart");
-    NProgress.start();
     setLoading(true);
+    NProgress.start();
   });
 
   Router.events.on("routeChangeComplete", (url: any) => {
-    console.log("routeChangeComplete");
-    NProgress.done();
-    setLoading(false);
+    setTimeout(() => {
+      NProgress.done();
+      setLoading(false);
+    }, 3000);
   });
 
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         {/* <SessionProvider session={session}> */}
-        {/* @ts-ignore */}
         <Head>
           <link
             rel="stylesheet"
@@ -47,7 +46,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
             referrerPolicy="no-referrer"
           />
         </Head>
-        {loading && <PageLoading />}
+        <PageLoading loading={loading} />
         <Layout>
           <Component {...pageProps} />
         </Layout>
